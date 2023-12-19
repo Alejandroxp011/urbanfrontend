@@ -1,0 +1,1 @@
+export const PRODUCT_SELECT_OPTIONS = {all:'ALL',inOffer:'IN_OFFER',noOffer:'NO_OFFER'}

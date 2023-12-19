@@ -1,0 +1,50 @@
+.footer {
+    position: fixed; /* O también puedes usar 'absolute' dependiendo del diseño */
+    bottom: 0;
+    
+    width: 100%; /* Resta los márgenes de izquierda y derecha del cuerpo */
+    background-color: #181c3e;
+    padding: 1rem 0;
+
+    /* Otras propiedades según tu diseño */
+  }
+  
+
+@media (min-width:768px){
+    .contenido{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.navegacion{
+    position: relative;
+    left: 18rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (min-width: 768px){
+    .navegacion{
+        flex-direction: row;
+        gap:3rem;
+    }
+}
+.navegacion a {
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    left: 5rem;
+}
+.navegacion a:hover {
+    color: aquamarine;
+}
+.copyright{
+    position: relative;
+    right: 3rem;
+    font-size: 1rem;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}

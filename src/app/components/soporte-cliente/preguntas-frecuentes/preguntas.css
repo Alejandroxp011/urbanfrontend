@@ -1,0 +1,52 @@
+.faq-Container {
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; */
+  
+
+  display: grid;
+  margin-top: 5%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px; /* Espaciado entre tarjetas */
+  
+  
+}
+
+.faq-card {
+  margin: auto;
+  padding: 2%;
+  height: 80%;
+  /* height: auto; */
+  width: 530px;
+  /* border: 1px solid #333; */
+  border-radius: 5px;
+  background-color: rgb(103,136,195);
+  text-align:left;
+
+
+}
+
+
+.faq-question {
+  
+  font-weight: bold;
+  /* font-size: 30px; */
+  font-family: Arial;
+  padding-bottom: 15px;
+  word-wrap: break-word;
+  
+}
+.faq-answer{
+  font-family: sans-serif;
+  font-weight: bold;
+  padding-left: 5px;
+
+  
+  white-space: nowrap;
+  text-overflow:clip;
+  white-space: initial;
+  /* height: auto; */
+  word-wrap: break-word;
+  
+
+}
