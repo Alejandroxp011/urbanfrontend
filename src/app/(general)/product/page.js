@@ -39,7 +39,7 @@ useEffect(() => {
         <Container maxWidth="100%" sx={{ padding: 0, marginTop: 12, backgroundColor: '#f0f0f0', textAlign: 'center' }}>
       <Paper sx={{ padding: 0, display: 'flex', gap: 3, margin: 'auto', textAlign: 'center' }}>
       <img
-        src={`data:image/${Product.image.split('.').pop()};base64, ${Product.imagen_base64}`}
+        src={Product.image}
         alt="Imagen del producto"
         style={{ maxWidth: '45%', flex: '0 0 auto' }}
       />

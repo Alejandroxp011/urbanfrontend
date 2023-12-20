@@ -12,7 +12,7 @@ function transformProduct(item) {
         stockAmount: item.stock,
         productBrand: item.brand,
         provider: item.provider,
-        image: `data:image/${item.image.split('.').pop()};base64, ${item.imagen_base64}`,
+        image: item.image,
         categoryId: item.category_id,
         quantity: item.stock,
         discout: item.promotions,
@@ -57,7 +57,7 @@ const handleCardClick = () => {
       <CardMedia
         component="img"
         height="200"
-        src={`data:image/${product.image.split('.').pop()};base64, ${product.imagen_base64}`}
+        src={product.image}
         alt={product.name}
         onClick={handleCardClick}
       />
