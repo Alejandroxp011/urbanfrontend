@@ -24,7 +24,7 @@ function ProductsCatalog() {
    const getProducts = async () => {
      try {
          const response = await axiosInterceptorInstance.get(
-           `${ENDPOINTS.products}/${20}/${selectValue}`
+           `${ENDPOINTS.products}/${200}/${selectValue}`
          );
          setProducts(response.data.data);
      } catch (error) {
