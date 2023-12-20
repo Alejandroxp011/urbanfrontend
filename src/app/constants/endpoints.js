@@ -6,7 +6,7 @@ export const ENDPOINTS = {
     modifyProfile: '/modifyProfile',
     reports: '/reportes',
     clientReportData: '/reporting/user/',
-    userReportData: '/reporting/user-register/',
+    userReportData: '/reporting/userdata/',
     userDelete: '/reporting/user/',
     inventaryReport: '/reportes/inventarios',
     inventaryReportData: '/reporting/inventary/',
