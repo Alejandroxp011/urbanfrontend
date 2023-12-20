@@ -58,7 +58,7 @@ const handleCardClick = () => {
         component="img"
         height="200"
         src={product.image}
-        alt={product.name}
+        alt={product.name??'Imagen no disponible'}
         onClick={handleCardClick}
       />
 
@@ -75,7 +75,7 @@ const handleCardClick = () => {
 
       <CardContent>
         <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
-          {product.name}
+          {product.name??'Nombre no disponible'}
         </Typography>
 
         {hasPromotion ? (
