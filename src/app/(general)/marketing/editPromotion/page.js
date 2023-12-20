@@ -25,6 +25,8 @@ function MiComponente() {
     const id = urlParams.get('id');
     const response = await axiosInterceptorInstance.get(`${ENDPOINTS.discount}/${id}`)
     if(response.status === 200){
+        console.log(response.data[0].cupon, response.data[0].discount)
+        setSelectValue(response.data[0].type_discount === false ? 'Bs' : '%');
         setDiscountData(response.data[0])
     }
   };
@@ -34,6 +36,7 @@ function MiComponente() {
 
   const [mostrarCodigo, setMostrarCodigo] = useState(false);
   const [selectedType, setSelectedType] = useState('');
+  const [selectValue, setSelectValue] = useState('');
   
   const handleTipoPromocionChange = (event) => {
     const selectedValue = event.target.value;
@@ -43,10 +46,10 @@ function MiComponente() {
 
   const handleTypeChange = (event) => {
     const value = event.target.value;
-    setSelectedType(value);
+    setSelectValue(value);
     setDiscountData((prevDiscountData) => ({
       ...prevDiscountData,
-      type_discount: value === '%' ? 0 : 1,
+      type_discount: value === 'Bs' ? false : true,
     }));
   };
 
@@ -161,7 +164,7 @@ function MiComponente() {
             </Grid>
             <Grid item xs={1.5}>
               <FormControl fullWidth>
-                <Select style={{ height: '40px' }} value={discountData?.type_discount === 1 ? 'Bs' : '%'} onChange={handleTypeChange}>
+                <Select style={{ height: '40px' }} value={selectValue} onChange={handleTypeChange}>
                   <MenuItem value=""><em>Selecciona un tipo de descuento</em></MenuItem>
                   <MenuItem value="Bs">Bs</MenuItem>
                   <MenuItem value="%">%</MenuItem>
@@ -265,10 +268,11 @@ function MiComponente() {
                 <FormControlLabel
                   control={
                     <Checkbox
-                    checked={discountData?.discount === 1}
+                    checked={discountData && discountData.discount}
                     onChange={handleTipoPromocionChange}
                     value="descuento"
-                    color={discountData?.discount === 1 ? "primary" : "default"}
+                    color={discountData?.discount ? "primary" : "default"}
+                    disabled
                     />
                   }
                   label="Descuento"
@@ -278,10 +282,11 @@ function MiComponente() {
                 <FormControlLabel
                   control={
                     <Checkbox
-                    checked={discountData?.cupon === 1} 
+                    checked={discountData && discountData.cupon} 
                     onChange={handleTipoPromocionChange}
                     value="cupon"
-                    color={discountData?.cupon === 1 ? "primary" : "default"}
+                    color={discountData?.cupon ? "primary" : "default"}
+                    disabled
                     />
                   }
                   label="Cupón"
@@ -290,7 +295,7 @@ function MiComponente() {
             </Grid>
           </Grid>
 
-          {(discountData?.cupon === 1 || mostrarCodigo) &&(
+          {(discountData?.cupon || mostrarCodigo) &&(
             <Grid container alignItems="center" style={{ marginBottom: '4vh' }}>
               <Grid item xs={4}>
                 <Typography variant="subtitle1">Código:</Typography>

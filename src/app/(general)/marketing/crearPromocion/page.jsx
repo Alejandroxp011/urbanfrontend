@@ -54,6 +54,7 @@ function CrearPromocion() {
   const [value, setValue] = useState('');
   const [code, setCode] = useState('');
   const [type_discount, setSelectType] = useState(false);
+  const [selectValue, setSelectValue] = useState(0);
   const [date_start, setInitialDate] = useState('');
   const [date_end, setFinalDate] = useState('');
   const [discount, setDiscount] = useState(false);
@@ -71,7 +72,9 @@ function CrearPromocion() {
   };  
 
   const handleChangeTipoDescuento = (event) => {
-    setSelectType(event.target.value === "Bs" ? false : true);
+    console.log(event.target.value)
+    setSelectValue(event.target.value);
+    setSelectType(event.target.value === 0 ? false : true);
   };
 
   const handleTipoPromocionChange = (event) => {
@@ -140,7 +143,7 @@ function CrearPromocion() {
             <Grid item xs={1.5}>
               <FormControl fullWidth>
                 <Select style={{ height: '40px' }}
-                value={type_discount} 
+                value={selectValue} 
                 onChange={handleChangeTipoDescuento}
                 >
                   <MenuItem value={0}>Bs</MenuItem>
