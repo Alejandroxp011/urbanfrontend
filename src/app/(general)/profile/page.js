@@ -14,6 +14,7 @@ function Profile() {
 	const router = useRouter();
 	const [userData, setUserData] = useState(null);
 	const [openDialog, setOpenDialog] = useState(false);
+	const [openDialog2, setOpenDialog2] = useState(false);
 	const [text, setText] = useState();
 	const [editModeCorreo, setEditModeName] = useState(userData?.name || '');
 	const [editModeNombre, setEditModeEmail] = useState(userData?.email || '');
@@ -90,19 +91,23 @@ function Profile() {
 		setOpenDialog(false);
 		setText('');
 	}
+	  
+	const handleCloseDialog2 = () => {
+		setOpenDialog2(false);
+		setText('');
+	}
+
 
 	const handleConfirmDeleteAccount = () => {
 		deleteAccount();
 		setOpenDialog(false);
 		setText('');
-		if (text === DELETE_MESSAGES.question) {
-			router.push('/login');
-		}
+		router.push('/');
 	}
 
 	const handleConfirmDeleteImage = () => {
 		deleteImage();
-		setOpenDialog(false);
+		setOpenDialog2(false);
 		setText('');
 	}
 
@@ -121,7 +126,7 @@ function Profile() {
 
 	const handleDeleteImage = () => {
 		setText(DELETE_MESSAGES.imageElimination);
-		setOpenDialog(true);
+		setOpenDialog2(true);
 	}
 
 	const deleteImage = () => {
@@ -209,8 +214,8 @@ function Profile() {
 								{userData.phone}
 							</Typography>
 							<EditIcon sx={{ color: '#98436C', margin: "0", alignSelf: 'flex-end', fontSize:30 }} onClick={redirectToModify} />
-							<AlertDialogDelete handleClose={handleCloseDialog} handleConfirm={handleConfirmDeleteAccount} openDialog={openDialog} text={text} title={"Eliminar Cuenta"} />
-					<AlertDialogDelete handleClose={handleCloseDialog} handleConfirm={handleConfirmDeleteImage} openDialog={openDialog} text={text} title={"Eliminar foto de Perfil"} />
+					<AlertDialogDelete handleClose={handleCloseDialog} handleConfirm={handleConfirmDeleteAccount} openDialog={openDialog} text={text} title={"Eliminar Cuenta"} />
+					<AlertDialogDelete handleClose={handleCloseDialog2} handleConfirm={handleConfirmDeleteImage} openDialog={openDialog2} text={text} title={"Eliminar foto de Perfil"} />
 					<Button variant="contained" onClick={handleAlert} sx={{ backgroundColor: '#D33838', '&:hover': { backgroundColor: '#98436C' }, width: 170}}>
 
 						Eliminar cuenta
