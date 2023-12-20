@@ -112,7 +112,7 @@ const PagoQR = () => {
     try {
       const response = await axiosInterceptorInstance.get(`${ENDPOINTS.validar}/${idOrder}`);
       console.log('Respuesta de validación:', response.data.pago);
-      if (response.data.pago === 0) {
+      if (response.data.pago === false) {
         alert('No se ha realizado el pago');
       }
       else {
