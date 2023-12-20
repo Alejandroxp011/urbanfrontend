@@ -30,7 +30,7 @@ const Reports = () => {
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [startDate, setStartDate] = useState(dayjs().subtract(1, 'month').format('YYYY-MM-DD'));
-    const [endDate, setEndDate] = useState(dayjs().format('YYYY-MM-DD'));
+    const [endDate, setEndDate] = useState(dayjs().add(1, 'day').format('YYYY-MM-DD'));
     const [data, setData] = useState([]);
     const [sourceData, setSourceData] = useState([]);
 
@@ -45,7 +45,7 @@ const Reports = () => {
             data = processData(data);
             setSourceData(data);
             setData(data);
-        }  
+        }
     }
 
     const generateReport = () => {
@@ -69,23 +69,23 @@ const Reports = () => {
             let totalAmount = 0;
             let dateInventorie = 'none';
             inventary.inventories.map(inventorie => {
-                totalAmount += inventorie.buying_amount;
+                totalAmount += parseInt(inventorie.buying_amount);
                 dateInventorie = inventorie.buying_date;
 
             })
             inventary.selection_details.map(inventorie => {
-                totalQuantity += inventorie.quantity;                ;
-           
+                totalQuantity += parseInt(inventorie.quantity);
+
             })
 
-            dateInventorie = dateInventorie== 'none' ? '': dayjs(dateInventorie).format("DD-MM-YYYY");
+            dateInventorie = dateInventorie == 'none' ? '' : dayjs(dateInventorie).format("DD-MM-YYYY");
             processedData.push(
                 getProductJSON(inventary.id, inventary.name, totalQuantity, totalAmount, dateInventorie, inventary.stock));
         });
         return processedData;
     };
 
-    const getProductJSON = ( id, name, quantity, amount, buyDate, stock) => {
+    const getProductJSON = (id, name, quantity, amount, buyDate, stock) => {
         let inventorieData =
         {
             id: id,
@@ -170,7 +170,7 @@ const Reports = () => {
         setDense(event.target.checked);
     };
     const generatePdf = () => {
-        let pdfInfo = {title: "Reporte de inventarios", fileName: "reporte_inventarios"};
+        let pdfInfo = { title: "Reporte de inventarios", fileName: "reporte_inventarios" };
         let filters = [
             {
                 name: "Fecha inicio",
@@ -181,7 +181,7 @@ const Reports = () => {
                 value: endDate
             },
         ];
-        const tableHeads = ["Producto", "Cant. Adquirida", "Cant. Vendida", "Fecha de Compra", "Cant. Actual"];
+        const tableHeads = ["Producto", "Cant. Vendida", "Cant. Adquirida", "Fecha de Compra", "Cant. Actual"];
         pdf(pdfInfo, filters, tableHeads, data);
     };
 

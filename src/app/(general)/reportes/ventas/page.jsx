@@ -30,7 +30,7 @@ const Reports = () => {
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [startDate, setStartDate] = useState(dayjs().subtract(1, 'month').format('YYYY-MM-DD'));
-    const [endDate, setEndDate] = useState(dayjs().format('YYYY-MM-DD'));
+    const [endDate, setEndDate] = useState(dayjs().add(1, 'day').format('YYYY-MM-DD'));
     const [data, setData] = useState([]);
     const [sourceData, setSourceData] = useState([]);
 
@@ -65,12 +65,12 @@ const Reports = () => {
         let processedData = [];
         data.map(orden => {
             processedData.push(
-                getOrdenJSON(orden.id, orden.product.name, orden.order.user.name, orden.order.created_at.split('T')[0], orden.order.total));
+                getOrdenJSON(orden.id, orden.product.name, orden.order.user.name, orden.order.created_at.split('T')[0], parseFloat(orden.price_unit), orden.quantity, parseFloat(orden.subtotal)));
         });
         return processedData;
     };
 
-    const getOrdenJSON = (id, nameProduct, nameUser, updated_at , total) => {
+    const getOrdenJSON = (id, nameProduct, nameUser, updated_at, precioUnitario, cantidad, total) => {
         let clientData =
         {
             id: id,
@@ -78,8 +78,8 @@ const Reports = () => {
             cliente: nameUser,
             fecha: updated_at,
             total: parseFloat(total),
-            
-            
+            precio_unitario: precioUnitario,
+            cantidad: cantidad
         };
         return clientData;
     };
@@ -237,6 +237,8 @@ const Reports = () => {
                                             <TableCell align="left">{row.ventas}</TableCell>
                                             <TableCell align="left">{row.cliente}</TableCell>
                                             <TableCell align="left">{row.fecha}</TableCell>
+                                            <TableCell align="right">{row.precio_unitario}</TableCell>
+                                            <TableCell align="right">{row.cantidad}</TableCell>
                                             <TableCell align="right">{row.total}</TableCell>
                                         </TableRow>
                                     );

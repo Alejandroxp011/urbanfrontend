@@ -26,6 +26,18 @@ const enhancedTableHead = (props) => {
             label: 'Fecha',
         },
         {
+            id: 'precio_unitario',
+            numeric: true,
+            disablePadding: false,
+            label: 'P. Unitario',
+        },
+        {
+            id: 'cantidad',
+            numeric: true,
+            disablePadding: false,
+            label: 'Cantidad',
+        },
+        {
             id: 'total',
             numeric: true,
             disablePadding: false,

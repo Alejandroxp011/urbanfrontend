@@ -30,7 +30,7 @@ const Reports = () => {
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [startDate, setStartDate] = useState(dayjs().subtract(1, 'month').format('YYYY-MM-DD'));
-    const [endDate, setEndDate] = useState(dayjs().format('YYYY-MM-DD'));
+    const [endDate, setEndDate] = useState(dayjs().add(1, 'day').format('YYYY-MM-DD'));
     const [data, setData] = useState([]);
     const [sourceData, setSourceData] = useState([]);
 
