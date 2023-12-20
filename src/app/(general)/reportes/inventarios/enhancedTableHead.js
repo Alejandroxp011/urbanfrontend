@@ -14,20 +14,20 @@ const enhancedTableHead = (props) => {
             label: 'Producto',
         },
         {
-            id: 'quantity',
+            id: 'amount',
             numeric: true,
             disablePadding: false,
             label: 'Cantidad Adquirida',
         },
         {
-            id: 'amount',
+            id: 'quantity',
             numeric: true,
             disablePadding: false,
             label: 'Cantidad Vendida',
         },
         {
             id: 'buyDate',
-            numeric: true,
+            numeric: false,
             disablePadding: false,
             label: 'Fecha de Compra',
         },
@@ -37,7 +37,7 @@ const enhancedTableHead = (props) => {
             disablePadding: false,
             label: 'Cantidad Actual',
         },
-        
+
     ];
 
     const { order, orderBy, onRequestSort } =
