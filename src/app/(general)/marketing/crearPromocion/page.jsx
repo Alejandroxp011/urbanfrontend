@@ -53,11 +53,11 @@ function CrearPromocion() {
   const [use_max, setLimit] = useState('');
   const [value, setValue] = useState('');
   const [code, setCode] = useState('');
-  const [type_discount, setSelectType] = useState(0);
+  const [type_discount, setSelectType] = useState(false);
   const [date_start, setInitialDate] = useState('');
   const [date_end, setFinalDate] = useState('');
-  const [discount, setDiscount] = useState(0);
-  const [cupon, setCupon] = useState(0);
+  const [discount, setDiscount] = useState(false);
+  const [cupon, setCupon] = useState(false);
 
   const handleChange = (event) => {
     setLimit(event.target.value);
@@ -71,7 +71,7 @@ function CrearPromocion() {
   };  
 
   const handleChangeTipoDescuento = (event) => {
-    setSelectType(event.target.value === "Bs" ? 0 : 1);
+    setSelectType(event.target.value === "Bs" ? false : true);
   };
 
   const handleTipoPromocionChange = (event) => {
@@ -80,11 +80,11 @@ function CrearPromocion() {
     setMostrarCodigo(selectedValue === 'cupon');
     
     if (selectedValue === 'descuento') {
-      setDiscount(1);
-      setCupon(0);
+      setDiscount(true);
+      setCupon(false);
     } else if (selectedValue === 'cupon') {
-      setCupon(1);
-      setDiscount(0);
+      setCupon(true);
+      setDiscount(false);
     }
   };
 

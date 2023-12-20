@@ -57,8 +57,8 @@ const handleCardClick = () => {
       <CardMedia
         component="img"
         height="200"
-        src={product.image}
-        alt={product.name??'Imagen no disponible'}
+        src={product?.image}
+        alt={product?.name??'Imagen no disponible'}
         onClick={handleCardClick}
       />
 
@@ -68,14 +68,14 @@ const handleCardClick = () => {
             <Typography>Oferta limitada</Typography>
           </Box>
           <Box sx={styleDescription}>
-            <Typography>{product.promotions[0].discount.name}</Typography>
+            <Typography>{product?.promotions?.[0]?.discount?.name}</Typography>
           </Box>
         </>
       )}
 
       <CardContent>
         <Typography variant="h5" component="div" sx={{ textAlign: 'center' }}>
-          {product.name??'Nombre no disponible'}
+          {product?.name??'Nombre no disponible'}
         </Typography>
 
         {hasPromotion ? (
@@ -83,19 +83,19 @@ const handleCardClick = () => {
             <Box>
               <Typography variant="body2">Antes:</Typography>
               <Typography variant="body2" color="text.secondary" sx={{ textDecoration: 'line-through' }}>
-                {product.price} Bs.
+                {product?.price} Bs.
               </Typography>
             </Box>
             <Box>
               <Typography variant="body2">Ahora:</Typography>
               <Typography variant="body2" color="text.secondary">
-                {Number((Number(product.price) - Number(product.promotions[0].discount.value)).toFixed(2))} Bs.
+                {Number((Number(product?.price) - Number(product?.promotions?.[0]?.discount?.value)).toFixed(2))} Bs.
               </Typography>
             </Box>
           </Stack>
         ) : (
           <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
-            {product.price} Bs.
+            {product?.price} Bs.
           </Typography>
         )}
 
