@@ -4,6 +4,7 @@ import Modal from "../editar-pregunta";
 import { Box, Button } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {ENDPOINTS} from '../../../constants/endpoints'
+import styles from './preguntas.css'
 
 const FAQ = ({ faqs,admin }) => {
   const [activeIndex, setActiveIndex] = useState(null);

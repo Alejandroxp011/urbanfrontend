@@ -155,7 +155,7 @@ function Profile() {
 							</Button>
 						</Box>
 
-						<Button variant="contained"
+						<Button variant="contained" onClick={handleDeleteImage}
 							sx={{ alignSelf: 'center', backgroundColor: '#BF6565', '&:hover': { backgroundColor: '#98436C' }, borderRadius: '0px 0px 5px 5px', height: 20, marginRight: 0, fontSize: 11 }}>
 							Eliminar imagen
 						</Button>
