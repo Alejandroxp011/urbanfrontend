@@ -45,7 +45,6 @@ function ProductRegistration() {
             ENDPOINTS.getCategories
           );
           setCategories(response.data);
-          console.log(response.data);
       } catch (error) {
         console.error("Error al obtener las categorias:", error);
       }
@@ -56,8 +55,6 @@ function ProductRegistration() {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    
-    // Si es un campo de archivo, actualiza la imagenProducto
     if (name === 'image') {
       setProduct((prevCategory) => ({
         ...prevCategory,
@@ -69,7 +66,6 @@ function ProductRegistration() {
       validateField('stock',product.stock);
       validateField('description',product.description);
       validateField('brand',product.brand);
-      //validateField(e.target.image,e.target.value);
       setProduct((prevProducto) => ({ ...prevProducto, [name]: value }));
     }
   };
@@ -84,7 +80,6 @@ function ProductRegistration() {
   };
 
   const handleSave = () => {
-    // Validar que los campos requeridos no estén vacíos
     const requiredFields = ['name', 'price', 'stock','description','brand'];
     const emptyFields = requiredFields.filter(field => !product[field]);
   
@@ -99,23 +94,9 @@ function ProductRegistration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes realizar la lógica para enviar los datos del producto al servidor
-    console.log('Datos del nuevo producto:', product);
-    // También puedes agregar aquí la lógica para redirigir a la página de detalles del producto, etc.
 
-    console.log('validacion nombre: ', error.name );
-    console.log('validacion descripcion: ', error.description );
-    console.log('validacion precio: ', error.price );
-    console.log('validacion stock', error.stock);
-    console.log('validacion marca' , error.brand);
-    console.log('validacion categoria' , error.category_id);
-
-    console.log("validacion final: " , ((!error.name || !error.description || !error.price || !error.stock || !error.brand) && handleSave() /*!error.image */));
-
-    if ((!error.name || !error.description || !error.price || !error.stock || !error.brand) && handleSave() /*!error.image */){
-      console.log("estoy entrando")
+    if ((!error.name || !error.description || !error.price || !error.stock || !error.brand) && handleSave()){
       const formData = new FormData();
-      console.log ("formData");
       formData.append('name', product.name);
       formData.append('code', product.code);
       formData.append('description', product.description);
@@ -125,7 +106,6 @@ function ProductRegistration() {
       formData.append('provider', product.provider);
       formData.append('image', product.image);
       formData.append('category_id', 1);
-      console.log (formData.get('name'));
       axiosInterceptorInstance.post(ENDPOINTS.registerProduct,
         formData
         )
@@ -224,19 +204,16 @@ function ProductRegistration() {
                 value={product.category_id}
                 onChange={handleChange}
                 error={error.category_id}
-                helperText = {error.category_idMessage}
                 label="Categoría"
                 sx={{ marginBottom: 0 }}
               >
                 {
                   Categories.map((category)=>
-                  <MenuItem value={category.id}>{category.name}</MenuItem>)
+                  <MenuItem key={category.id} value={category.id}>{category.name}</MenuItem>)
                 }
               </Select>
               
             </Grid>
-
-            {/* Centro: Cuadro para subir imagen */}
             <Grid item xs={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
               <Box sx={{ border:'1px solid #C4C4C4', padding: '5%', height: '365px', borderRadius: '4px'}}>
                 <Input
@@ -245,11 +222,6 @@ function ProductRegistration() {
                     id='image'
                     name='image'
                     onChange={handleChange}
-                    /*onChange={(e) =>{
-                      handleChange(e);
-                      validateField(e);
-                    }}
-                    error = {error.image}*/
                     sx={{ marginTop: 1, marginBottom: 1 }}
                 />
                 <Typography variant="caption">
@@ -296,12 +268,12 @@ function ProductRegistration() {
 
           <Box sx={{ marginTop: 2, width: '100%', display: 'flex', justifyContent: 'space-around' }}>
           <Button variant="contained" sx={{backgroundColor: '#D33838', borderRadius: '15px',height: '50px', width: '200px', '&:hover': {
-                backgroundColor: '#1976D2', // Cambia al color que desees al pasar el mouse
+                backgroundColor: '#1976D2',
               }, }} onClick={() => router.push('/productAdmin')}>
               Cancelar
             </Button>
             <Button type="submit" variant="contained" sx={{backgroundColor: '#6788C3' , borderRadius: '15px',height: '50px', width: '200px', '&:hover': {
-                backgroundColor: '#32569B', // Cambia al color que desees al pasar el mouse
+                backgroundColor: '#32569B', 
               }, }} >
               Registrar
             </Button>

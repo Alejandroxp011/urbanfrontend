@@ -32,7 +32,7 @@ const enhancedTableHead = (props) => {
             label: 'Cant. Compras',
         },
         {
-            id: 'numProducts',
+            id: 'totalProducts',
             numeric: true,
             disablePadding: false,
             label: '# Productos',

@@ -41,7 +41,6 @@ function PasswordRecoveryPage() {
     const handlePasswordRecovery = (event) => {
         event.preventDefault();
         axiosInterceptorInstance.post(ENDPOINTS.restore, data).then((response) => {
-            console.log(response);
         });
         router.push(ENDPOINTS.login);
     };
@@ -78,7 +77,7 @@ function PasswordRecoveryPage() {
             justifyContent: 'flex-start', backgroundColor: 'white', minHeight: '100vh', paddingTop: '10%',
             minWidth: '100vw'
         }}>
-            <Typography variant="h3" sx={{ color: 'black', marginBottom: '2rem', textAlign: 'center' }}>Crear Nueva Contreseña</Typography>
+            <Typography variant="h3" sx={{ color: 'black', marginBottom: '2rem', textAlign: 'center' }}>Crear Nueva Contraseña</Typography>
             <TextField
                 id="registerPassword"
                 name="password"

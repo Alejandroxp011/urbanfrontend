@@ -79,7 +79,7 @@ export default function LoginPage() {
         router.push('/register');
     }
     const redirectToForgotPassword = () => {
-        router.push(ENDPOINTS.forget);
+        router.push('/forget-password');
     }
     const sendData = () => {
         axiosInterceptorInstance.post(ENDPOINTS.login, data).then((response) => {
@@ -87,7 +87,7 @@ export default function LoginPage() {
             const { token } = response.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(response.data));
-            router.push('/reportes/usuariosRegistrados');
+            router.push('/catalogoProductos');
         }).catch((error) => {
             setText(LOGIN_MESSAGES.errorLogin);
             setOpenDialog(true);

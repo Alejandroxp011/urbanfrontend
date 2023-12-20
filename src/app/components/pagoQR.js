@@ -80,9 +80,9 @@ const PagoQR = () => {
       if (discount.discount === 1 && new Date(discount.date_start) <= currentDate && currentDate <= new Date(discount.date_end)) {
         const discountValue = parseFloat(discount.value);
         switch(discount.type_discount) {
-          case 1: // Porcentaje
+          case 1: 
             return { value: totalDiscount.value + (discountValue * item.price / 100) * item.quantity, originalValue: discountValue, type: '%' };
-          case 0: // Valor fijo
+          case 0: 
             return { value: totalDiscount.value + discountValue * item.quantity, type: 'Bs' };
           default:
             return totalDiscount;

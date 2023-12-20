@@ -63,8 +63,6 @@ const handleChange = (e) => {
       image: files[0],
     }));
   } else {
-
-    // Utiliza el valor actualizado que estás recibiendo como parámetro en validateField
     validateField(name, value);
     console.log('Producto actualizado:', {
       ...product,
@@ -88,7 +86,6 @@ const handleChange = (e) => {
  };
 
  const handleSave = () => {
-  // Validar que los campos requeridos no estén vacíos
   const requiredFields = ['name', 'price', 'stock','description','brand'];
   const emptyFields = requiredFields.filter(field => !product[field]);
   if (emptyFields.length > 0) {
@@ -101,7 +98,6 @@ const handleChange = (e) => {
 
  const handleSubmit = async (e) => {
   e.preventDefault();
-  // Aquí puedes realizar la lógica para enviar los datos del producto al servidor
   
 
   if ((!error.name || !error.description || !error.price || !error.stock || !error.brand) && handleSave() /*!error.image */){
@@ -124,7 +120,6 @@ const handleChange = (e) => {
       alert("Producto editado exitosamente")
     })
     .catch((error) => {
-    console.error('Error al enviar los datos al servidor:', error);
   
     })
   }
@@ -230,8 +225,6 @@ return (
               </Select> 
 
               </Grid>
-
-               {/* Centro: Cuadro para subir imagen */}
             <Grid item xs={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
               <Box sx={{ border:'1px solid #C4C4C4', padding: '5%', height: '365px', borderRadius: '4px'}}>
                 <Input
@@ -239,11 +232,6 @@ return (
                     accept="image/*"
                     name="image"
                     onChange={handleChange}
-                    /*onChange={(e) =>{
-                      handleChange(e);
-                      validateField(e);
-                    }}
-                    error = {error.image}*/
                     sx={{ marginTop: 1, marginBottom: 1 }}
                 />
                 <Typography variant="caption">
@@ -294,12 +282,12 @@ return (
 
      <Box sx={{ marginTop: 2, width: '100%', display: 'flex', justifyContent: 'space-around' }}>
      <Button variant="contained" sx={{backgroundColor: '#D33838', borderRadius: '15px',height: '50px', width: '200px', '&:hover': {
-        backgroundColor: '#1976D2', // Cambia al color que desees al pasar el mouse
+        backgroundColor: '#1976D2',
        }, }} onClick={() => router.push('/productAdmin')}>
        Cancelar
      </Button>
      <Button type="submit" onClick={handleSubmit} variant="contained" sx={{backgroundColor: '#6788C3' , borderRadius: '15px',height: '50px', width: '200px', '&:hover': {
-        backgroundColor: '#32569B', // Cambia al color que desees al pasar el mouse
+        backgroundColor: '#32569B',
         }, }} >
         Editar
       </Button>

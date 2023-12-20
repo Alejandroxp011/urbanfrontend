@@ -47,7 +47,6 @@ const productAdmin = () => {
   };
 
   const handleStockUpdate = (updatedData) => {
-    console.log('Datos actualizados:', updatedData);
     closeModal();
   };
   return (
@@ -59,7 +58,7 @@ const productAdmin = () => {
                 '&:hover': { 
                   backgroundColor: "#0f1129"
                 }
-              }}variant="contained" onClick={() => router.push('/ProductRegistration')}> 
+              }}variant="contained" onClick={() => router.push('/productRegistration')}> 
                           Añadir Producto
       </Button>
       <Button  sx={{

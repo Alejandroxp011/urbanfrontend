@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
 };
 
 const handleCardClick = () => {
-  window.location.href = `/product/${product.id}`;
+  window.location.href = `/producto?id=${product.id}`;
 };
 
   const styleLabel = {

@@ -21,7 +21,6 @@ export const ENDPOINTS = {
     ordersYear:'reporting/ordersYears',
     economicReport:'reporting/economicReport',
     forget: '/forget-password',
-    restore: '/restore',
     registerInventary:'/agregar-stock',
     points:'/points',
     discount: '/discount',
@@ -51,5 +50,6 @@ export const ENDPOINTS = {
     dashboardUsers: '/reporting/users/',
     dashboardMostSelleds: '/reporting/mostSelleds/',
     dashboardIncomes: '/reporting/incomes/',
+    restore:'/restore',
     //añadir todos los endpoints que se necesiten
 }

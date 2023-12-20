@@ -18,7 +18,7 @@ class Footer extends Component {
             
             </Link>
             
-            <Link href="mailto:Roads<dave@1manstartup.com>" className='btn btn-link'>
+            <Link href="https://t.me/UrbanMarket_bot" className='btn btn-link'>
               Habla Con Nosotros
             </Link>
           </nav>

@@ -165,8 +165,6 @@ useEffect(() => {
               </Select>
 
             </Grid>
-
-            {/* Centro: Cuadro para subir icono*/}
             <Grid item xs={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
               <Box sx={{ border:'1px solid #C4C4C4', padding: '5%', height: '365px', borderRadius: '4px', marginTop:'15px'}}>
                 <Input

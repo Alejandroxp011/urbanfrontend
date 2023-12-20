@@ -8,8 +8,8 @@ export default function Template({children}) {
       <body>
         <Navbar />
         {children}
+        <Footer/>
       </body>
-       <Footer></Footer>
     </html>
   );
 }

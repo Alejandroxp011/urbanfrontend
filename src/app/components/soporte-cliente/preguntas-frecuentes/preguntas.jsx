@@ -1,7 +1,4 @@
-// components/FAQ.js
-// import axios from 'axios';
 import axiosInterceptorInstance from "../../../axios/interceptor";
-import styles from "./preguntas.css";
 import { useEffect, useState } from "react";
 import Modal from "../editar-pregunta";
 import { Box, Button } from "@mui/material";
@@ -21,7 +18,6 @@ const FAQ = ({ faqs,admin }) => {
           <Box className="faq-answer">{faqs.answer}</Box>
           <Box>
           {admin==1?<Button sx={'color: #ffff'} aria-label="delete" onClick={()=>{
-              const apiUrl = process.env.NEXT_PUBLIC_LARAVEL_API_URL;
               axiosInterceptorInstance.delete(ENDPOINTS.deleteFAQ+faqs.id)
                 .then(response => {
                     window.location.reload();

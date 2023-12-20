@@ -38,8 +38,6 @@ export default function Sidebar({ open, handleDrawerState }) {
                         justifyContent: open ? 'initial' : 'center',
                         px: 2.5,
                     }}
-                //Use the onClick to navigate to the page
-                //onClick={() => { router.push('/sales') }}
                 >
 
                     <ListItemIcon
@@ -65,7 +63,7 @@ export default function Sidebar({ open, handleDrawerState }) {
                             justifyContent: open ? 'initial' : 'center',
                             px: 2.5,
                         }}
-                        //Use the onClick to navigate to the page
+
                         onClick={() => { router.push('/support') }}
                     >
 
@@ -90,7 +88,7 @@ export default function Sidebar({ open, handleDrawerState }) {
                         justifyContent: open ? 'initial' : 'center',
                         px: 2.5,
                     }}
-                //Use the onClick to navigate to the page
+
                 onClick={() => { router.push('/productAdmin') }}
                 >
 
