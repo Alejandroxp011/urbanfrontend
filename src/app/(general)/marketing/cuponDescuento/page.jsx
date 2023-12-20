@@ -33,7 +33,7 @@ export default function BasicModal() {
  const getRandomId = async () => {
   const response = await axiosInterceptorInstance.get(`${ENDPOINTS.discounts}`);
   const ids = Object.keys(response.data)
-   .filter(key => response.data[key].cupon === 1)
+   .filter(key => response.data[key].cupon === true)
    .map(key => response.data[key].id);
   const randomId = ids[Math.floor(Math.random() * ids.length)];
   getAllDiscount(randomId);
