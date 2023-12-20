@@ -98,9 +98,9 @@ function TableFilter () {
   const handleSearch = () => {
     
     const filtered = data.filter(item =>{if (searchTerm === 'cupón') {
-                          return item.cupon === 1;
+                          return item.cupon === true;
                           } else if (searchTerm === 'descuento') {
-                          return item.discount === 1;
+                          return item.discount === true;
                           } else {
                           return true; 
                          
@@ -210,7 +210,7 @@ function TableFilter () {
               <TableCell align="center" 
                     >{row.name}</TableCell>
               <TableCell align="center">{row.description }</TableCell>
-              <TableCell align="center">{row.cupon===1?("cupón"):("descuento")}</TableCell>
+              <TableCell align="center">{row.cupon?("cupón"):("descuento")}</TableCell>
               <TableCell align="center">
                 <IconButton onClick={() => abrirCerrarModalProducto(row.id)}>
                   <AddCircleOutlineIcon/>

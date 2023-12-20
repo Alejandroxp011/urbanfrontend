@@ -54,7 +54,7 @@ export default function BasicModal() {
  const getAllDiscount = async (id) => {
   await axiosInterceptorInstance.get(`${ENDPOINTS.discount}/${id}`)
   .then(response => {
-   if (response.data[0].cupon === 1) { 
+   if (response.data[0].cupon === true) { 
      setDatosCupon(response.data[0]);
      setCodigo(response.data[0].code);
    }
