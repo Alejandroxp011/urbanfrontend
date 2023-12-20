@@ -58,7 +58,7 @@ const productAdmin = () => {
                 '&:hover': { 
                   backgroundColor: "#0f1129"
                 }
-              }}variant="contained" onClick={() => router.push('/productRegistration')}> 
+              }}variant="contained" onClick={() => router.push('/productRegister')}> 
                           Añadir Producto
       </Button>
       <Button  sx={{
